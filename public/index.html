@@ -1,0 +1,47 @@
+<!DOCTYPE html><html lang="en">
+	<head>
+		<title>React example</title>
+		<meta charSet="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<style media="only screen">
+            html, body, #root {
+                height: 100%;
+                width: 100%;
+                margin: 0;
+                box-sizing: border-box;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            html {
+                position: absolute;
+                top: 0;
+                left: 0;
+                padding: 0;
+                overflow: auto;
+            }
+
+            body {
+                padding: 1rem;
+                overflow: auto;
+            }
+        </style>
+	</head>
+	<body>
+		<div id="root">
+		</div>
+		<object id="loading-spinner" style="position:absolute;top:50%;left:50%;transform:translate(-50%, -50%) scale(2)" type="image/svg+xml" data="https://ag-grid.com/images/ag-grid-loading-spinner.svg" aria-label="loading">
+		</object>
+		<script id="loading-script">(function() {
+    const cleanupLoading = () => {
+        if (document.querySelector('.ag-root-wrapper, .ag-chart-wrapper')) {
+            document.querySelector('#loading-spinner').remove();
+            document.querySelector('#loading-script').remove();
+        } else {
+            requestAnimationFrame(() => cleanupLoading());
+        }
+    };
+
+    cleanupLoading();
+})()</script>
+	</body>
+</html>
